@@ -1,8 +1,8 @@
 //This code won't work without the Ably API key
 const ApiKey = 'S8kQhQ.hgTwAA:Tv0wjMpV0r23NCmV'
-const Ably = require("ably");
+import { Rest } from "ably";
 /* Instance the Ably REST server library */
-var rest = new Ably.Rest({ 
+var rest = new Rest({ 
   key: ApiKey
 });
 console.log('in auth server');
@@ -12,14 +12,14 @@ var uniqueId = function() {
   };
 
 /* Start the Express.js web server */
-const express = require('express'),
-      app = express(),
-      cookieParser = require('cookie-parser');
+import express, { static } from 'express';
+const app = express();
+import cookieParser from 'cookie-parser';
 
 app.use(cookieParser());
 
 /* Server static content from the root path to keep things simple */
-app.use('/', express.static(__dirname));
+app.use('/', static(__dirname));
 
 /* Issue token requests to clients sending a request
    to the /auth endpoint */
