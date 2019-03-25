@@ -6,10 +6,12 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>  
 <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
 <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+<!-- physics and other extras -->
+<script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
 <script type="text/javascript" src="main.js"></script>
 </head>
 <body>
-  <a-scene id="scene">
+  <a-scene id="scene" physics="debug:true;">
     <!--assets at one place for better loading-->
     <a-assets> 
         <img id="pink" src="https://img.gs/bbdkhfbzkk/stretch/http://i.imgur.com/1hyyIUi.jpg" crossorigin="anonymous" />
@@ -21,7 +23,7 @@
         <a-asset-item id="exoItalicFont" src="https://cdn.glitch.com/c719c986-c0c5-48b8-967c-3cd8b8aa17f3%2Fexo2BlackItalic.typeface.json?1490305922725"></a-asset-item>
         <a-mixin id="eye" geometry="primitive: sphere; radius: 0.2" material="shader: flat; side: double; color: #FFF"></a-mixin>
         <a-mixin id="pupil" geometry="primitive: sphere; radius: 0.05" material="shader: flat; side: double; color: #222"></a-mixin>
-        <a-mixin id="arm" geometry="primitive: box; depth: 0.2; height: 1.5; width: 0.2" material="color: #373737; shader: flat"></a-mixin>
+        <a-mixin id="arm" geometry="primitive: box; depth: 0.2; height: 1.5; width: 0.2" material="color: #373737; shader: flat" dynamic-body></a-mixin>
     </a-assets>
 
     <!--custom entities-->
@@ -54,7 +56,7 @@
     </a-entity>
 
     <a-entity
-        geometry="primitive: plane; width: 10000; height: 10000;" rotation="-90 0 0"
+        geometry="primitive: plane; width: 10000; height: 10000;" rotation="-90 0 0" static-body
         material="src: #grid; repeat: 10000 10000; transparent: true;metalness:0.6; roughness: 0.4; sphericalEnvMap: #sky;">
     </a-entity>
 
