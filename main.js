@@ -18,7 +18,7 @@ function startApp(userId) {
     var z = 0;
     var initialPosition = { x: x, y: y, z: z };
     VRchannel = ably.channels.get('vr-channel');
-    VRchannel.presence.enter()
+    VRchannel.presence.enter();
     var currentUser = {
         type: 'a-box',
         attr: {
